@@ -26,13 +26,8 @@ class Read_file_path(tk.Toplevel):
         self.button1 = tk.Button(self, text="select path", command=self.read_file_path)
         self.button1.pack()
 
-        self.text1 = tk.Text(self)
-        self.text1.pack(expand=True, fill='x')
-
-        self.scroll = tk.Scrollbar(self)
-        self.scroll.config(command=self.text1.yview)
-        self.text1.config(yscrollcommand=self.scroll.set)
-        self.scroll.pack(side=tk.RIGHT, fill=tk.Y)
+        self.treeview1 = ttk.Treeview(self )
+        self.treeview1.pack(expand=True, fill='x')
 
     def read_file_path(self):
         self.dir_path = filedialog.askdirectory()
@@ -42,13 +37,15 @@ class Read_file_path(tk.Toplevel):
         self.entry1.insert(0, self.dir_path)
         print(self.dir_path)
 
-        self.text1.delete("1.0", tk.END)
+        for i in self.treeview1.get_children():
+            self.treeview1.delete(i)
 
         for root, dir, files in os.walk(self.dir_path):
             for file in files:
-                self.text1.insert(tk.END, "\n"+os.path.join(root, file))
+                self.treeview1.insert('', 0 ,text =os.path.join(root, file))
 
-        self.text1.pack(expand=True, fill='both')
+        self.treeview1.pack(expand=True, fill='both')
+
 
     def destroy(self):
         self.__class__.alive =False
