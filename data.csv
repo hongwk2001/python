@@ -1,0 +1,4 @@
+name,join_cols,country
+Alice,25,USA
+Bob,"['hong','check']",Canada
+Eva,45,Canada

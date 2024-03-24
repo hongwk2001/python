@@ -1,0 +1,1 @@
+python pictool.py rotate images/Japan.png Japan2.png
