@@ -1,0 +1,1 @@
+python3 pictool.py blur images/Walker.png Walker2.png --radius=30

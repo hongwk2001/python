@@ -1,0 +1,11 @@
+{"name": "John Doe",
+  "age": 30, "city": "New York" ,
+"maps" : [
+  {"id" : "xyzp",
+    "path": "/i/bitu/text"
+  },
+      {
+        "id" : "xyzd",
+    "path": "/i/bitu/12text"
+  }]
+}

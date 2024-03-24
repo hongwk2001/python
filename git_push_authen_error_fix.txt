@@ -1,0 +1,3 @@
+#use -u to update login
+git push -u origin branch_name_that_you_want_to_push
+
