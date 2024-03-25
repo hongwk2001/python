@@ -1,5 +1,4 @@
 import tkinter as tk
-from tkinter import ttk
 from tkinter import filedialog
 
 def Read_file_path():
@@ -29,10 +28,6 @@ class Read_file_path(tk.Toplevel):
         self.text1 = tk.Text(self)
         self.text1.pack(expand=True, fill='x')
 
-        self.scroll = tk.Scrollbar(self)
-        self.scroll.config(command=self.text1.yview)
-        self.text1.config(yscrollcommand=self.scroll.set)
-        self.scroll.pack(side=tk.RIGHT, fill=tk.Y)
 
     def read_file_path(self):
         self.dir_path = filedialog.askdirectory()
@@ -48,7 +43,6 @@ class Read_file_path(tk.Toplevel):
             for file in files:
                 self.text1.insert(tk.END, "\n"+os.path.join(root, file))
 
-        self.text1.pack(expand=True, fill='both')
 
     def destroy(self):
         self.__class__.alive =False
