@@ -1,16 +1,16 @@
-{"name": "John Doe",
-  "age": 30, "city": "New York" ,
-"fields" : [
-  {"name" : "col1",
-    "path": "/i/bitu/text",
-    "fileposition" : 1
-  },
-      {   "name" : "col2",
-    "path": "/i/bitu/12text",
-        "fileposition" : 3
-  },
-{   "name" : "col3",
-    "path": "/i/bitu/12text",
-        "fileposition" : 2
-  }]
+{
+  "name": "John Doe",
+  "age": 30,
+  "city": "New York",
+  "fields": [
+    {
+      "name": "col1",        "path": "/i/bitu/text",      "fileposition": 1
+    },
+    {
+      "name": "col2",      "path": "/i/bitu/12text",       "fileposition": 2
+    },
+    {
+      "name": "col3",       "path": "/i/bitu/12text",      "fileposition": 3
+    }
+  ]
 }

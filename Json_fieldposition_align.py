@@ -16,11 +16,11 @@ def get_replace_from_to(src_txt, txt_fr, txt_to, new_val):
     replace_to = src_txt[src_txt.index( txt_fr): src_txt.index(txt_to)] + new_val
     return replace_fr, replace_to
 
-def pretty_json(file_path, YN)->str:
+def pretty_json(file_path, YN) :
     if YN == 'Y':
         with open(file_path, 'r') as f:
             json_obj = json.load(f)
-        pretty_json_str = json.dumps(json_obj, indent=2)
+        pretty_json_str = json.dumps(json_obj, indent=2).splitlines(keepends=True)
     else:
         with open(file_path, 'r') as f:
              pretty_json_str=f.readlines()
@@ -34,12 +34,13 @@ def align_field_position(file_path, given_key,pretty_json_yn, overwrite):
     # use with caution
     pretty_json_str = pretty_json(file_path, pretty_json_yn)
 
+
     new_file_content = ""
     line_no = 0
     new_val = 'metafix1'
     counter = 0
 
-    for line in pretty_json_str.splitlines() :
+    for line_no, line in  enumerate(pretty_json_str):
         line_no +=1
         dict_str = "{" + f"{line}" + "}"
         dict_val = None
@@ -57,7 +58,7 @@ def align_field_position(file_path, given_key,pretty_json_yn, overwrite):
                 counter+=1
                 replace_fr, replace_to  = get_replace_from_to(line, given_key, found_val, new_val=str(counter) )
                 new_line = line.replace(replace_fr, replace_to)
-                print(f"At {line_no} from: [{replace_fr}] after :[{replace_to}]")
+                #print(f"At {line_no} from: [{replace_fr}] after :[{replace_to}]")
                 print(f"At {line_no} from: [{line}] after :[{new_line}]")
 
                 new_file_content += new_line
@@ -71,6 +72,8 @@ def align_field_position(file_path, given_key,pretty_json_yn, overwrite):
         except SyntaxError:
             # most of lines that can not be converted to Dict will end up here
             new_file_content += line
+        except NameError:
+            print(line)
 
     # # new content
     # print('new_file_content',  type(new_file_content),  new_file_content)
@@ -80,6 +83,8 @@ def align_field_position(file_path, given_key,pretty_json_yn, overwrite):
         with open(file_path,'w', newline='\n') as out:
             out.write(new_file_content)
         print('over wrote on', file_path)
+    else :
+        print("Final:", new_file_content)
 
 import os
 
